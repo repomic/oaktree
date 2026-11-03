@@ -1,0 +1,22 @@
+{
+    "name": "repomic/oaktree",
+    "type": "library",
+    "description": "Oaktree is a utility-first CSS framework for rapidly building modern websites without ever leaving your HTML.",
+    "keywords": [
+        "css",
+        "style"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "laravel/framework": "^13.0"
+    },
+    "bin": [
+        "bin/oaktree"
+    ],
+    "autoload": {
+        "psr-4": {
+            "Oaktree\\": "src/"
+        }
+    }
+}
