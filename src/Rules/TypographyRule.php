@@ -66,29 +66,29 @@ class TypographyRule implements RuleInterface
     ];
 
     protected array $font_sizes = [
-        'base' => 'var(--lc-text-base)',
-        '4xl' => 'var(--lc-text-4xl)',
-        '3xl' => 'var(--lc-text-3xl)',
-        '2xl' => 'var(--lc-text-2xl)',
-        'xl' => 'var(--lc-text-xl)',
-        'lg' => 'var(--lc-text-lg)',
-        'md' => 'var(--lc-text-md)',
-        'sm' => 'var(--lc-text-sm)',
-        'xs' => 'var(--lc-text-xs)',
-        '2xs' => 'var(--lc-text-2xs)',
+        'base' => 'var(--ot-text-base)',
+        '4xl' => 'var(--ot-text-4xl)',
+        '3xl' => 'var(--ot-text-3xl)',
+        '2xl' => 'var(--ot-text-2xl)',
+        'xl' => 'var(--ot-text-xl)',
+        'lg' => 'var(--ot-text-lg)',
+        'md' => 'var(--ot-text-md)',
+        'sm' => 'var(--ot-text-sm)',
+        'xs' => 'var(--ot-text-xs)',
+        '2xs' => 'var(--ot-text-2xs)',
     ];
 
     protected array $line_heights = [
-        'base' => 'calc(var(--lc-text-base) * 1.25)',
-        '4xl' => 'calc(var(--lc-text-4xl) * 1.25)',
-        '3xl' => 'calc(var(--lc-text-3xl) * 1.25)',
-        '2xl' => 'calc(var(--lc-text-2xl) * 1.25)',
-        'xl' => 'calc(var(--lc-text-xl) * 1.25)',
-        'lg' => 'calc(var(--lc-text-lg) * 1.25)',
-        'md' => 'calc(var(--lc-text-md) * 1.25)',
-        'sm' => 'calc(var(--lc-text-sm) * 1.25)',
-        'xs' => 'calc(var(--lc-text-xs) * 1.25)',
-        '2xs' => 'calc(var(--lc-text-2xs) * 1.25)',
+        'base' => 'calc(var(--ot-text-base) * 1.25)',
+        '4xl' => 'calc(var(--ot-text-4xl) * 1.25)',
+        '3xl' => 'calc(var(--ot-text-3xl) * 1.25)',
+        '2xl' => 'calc(var(--ot-text-2xl) * 1.25)',
+        'xl' => 'calc(var(--ot-text-xl) * 1.25)',
+        'lg' => 'calc(var(--ot-text-lg) * 1.25)',
+        'md' => 'calc(var(--ot-text-md) * 1.25)',
+        'sm' => 'calc(var(--ot-text-sm) * 1.25)',
+        'xs' => 'calc(var(--ot-text-xs) * 1.25)',
+        '2xs' => 'calc(var(--ot-text-2xs) * 1.25)',
     ];
 
     public function handle(string $utility, Compiler $compiler): ?array

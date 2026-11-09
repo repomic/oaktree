@@ -15,9 +15,9 @@ class TransitionsAnimationRule implements RuleInterface
     ];
 
     protected array $transitionProperties = [
-        'transition' => 'color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --lc-gradient-from, --lc-gradient-via, --lc-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events',
+        'transition' => 'color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --ot-gradient-from, --ot-gradient-via, --ot-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events',
         'transition-all' => 'all',
-        'transition-colors' => 'color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --lc-gradient-from, --lc-gradient-via, --lc-gradient-to',
+        'transition-colors' => 'color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --ot-gradient-from, --ot-gradient-via, --ot-gradient-to',
         'transition-opacity' => 'opacity',
         'transition-shadow' => 'box-shadow',
         'transition-transform' => 'transform, translate, scale, rotate',

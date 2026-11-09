@@ -12,8 +12,8 @@ class FormRule implements RuleInterface
 
     protected array $static = [
         'form-label' => [
-            'font-size' => 'var(--lc-text-sm)',
-            'margin-bottom' => 'var(--lc-spacing)',
+            'font-size' => 'var(--ot-text-sm)',
+            'margin-bottom' => 'var(--ot-spacing)',
             'display' => 'inline-block',
 
             '&::after' => [
@@ -36,7 +36,7 @@ class FormRule implements RuleInterface
         'form-help' => [
             'font-family' => 'monospace',
             'display' => 'inline-block',
-            'font-size' => 'var(--lc-text-xs)',
+            'font-size' => 'var(--ot-text-xs)',
             'line-height' => '1.25',
             'border-radius' => '100%',
             'width' => '1.25rem',
@@ -48,7 +48,7 @@ class FormRule implements RuleInterface
             'vertical-align' => '0.1rem',
         ],
         'form-text' => [
-            'font-size' => 'var(--lc-text-sm)',
+            'font-size' => 'var(--ot-text-sm)',
             'line-height' => '1.25',
         ],
         'form-control' => [
@@ -63,29 +63,29 @@ class FormRule implements RuleInterface
             'border-radius' => '.375rem',
             'transition' => 'border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out',
             'outline' => '0px none',
-            'color' => 'var(--lc-base)',
-            'background-color' => 'var(--lc-light)',
-            'border' => '1px solid var(--lc-light-shade)',
+            'color' => 'var(--ot-base)',
+            'background-color' => 'var(--ot-light)',
+            'border' => '1px solid var(--ot-light-shade)',
             '-webkit-appearance' => 'none',
             '-moz-appearance' => 'none',
 
             '&.form-control-contrast' => [
-                'background-color' => 'var(--lc-body)',
-                'border-color' => 'var(--lc-medium)',
+                'background-color' => 'var(--ot-body)',
+                'border-color' => 'var(--ot-medium)',
             ],
 
             '&:focus' => [
                 'box-shadow' => '0 0 0 0.1rem rgba(10, 90, 209, 0.514)',
-                'background-color' => 'var(--lc-body)',
+                'background-color' => 'var(--ot-body)',
             ],
             '&:read-only' => [
-                'color' => 'var(--lc-base)',
+                'color' => 'var(--ot-base)',
             ],
             '&:disabled' => [
-                'background-color' => 'var(--lc-light)',
-                'color' => 'var(--lc-medium-tint)',
+                'background-color' => 'var(--ot-light)',
+                'color' => 'var(--ot-medium-tint)',
                 '&::placeholder' => [
-                    'color' => 'var(--lc-medium-tint)',
+                    'color' => 'var(--ot-medium-tint)',
                 ],
             ],
             '&[size]' => [
@@ -107,13 +107,13 @@ class FormRule implements RuleInterface
             'font-size' => '1rem',
             'line-height' => '1.25rem',
             'border-radius' => '.375rem',
-            'border' => '1px solid var(--lc-light-shade)',
-            'color' => 'var(--lc-base)',
+            'border' => '1px solid var(--ot-light-shade)',
+            'color' => 'var(--ot-base)',
             '-webkit-appearance' => 'none',
             '-moz-appearance' => 'none',
             'appearance' => 'none',
-            'background-color' => 'var(--lc-light)',
-            'background-image' => 'var(--lc-form-select-dd-icon)',
+            'background-color' => 'var(--ot-light)',
+            'background-image' => 'var(--ot-form-select-dd-icon)',
             'background-repeat' => 'no-repeat',
             'background-position' => 'right 0.75rem center',
             'background-size' => '16px 12px',
@@ -131,11 +131,11 @@ class FormRule implements RuleInterface
             ],
 
             '&:disabled' => [
-                'background-color' => 'var(--lc-light)',
-                'color' => 'var(--lc-medium-tint)',
+                'background-color' => 'var(--ot-light)',
+                'color' => 'var(--ot-medium-tint)',
 
                 '&::placeholder' => [
-                    'color' => 'var(--lc-medium-tint)',
+                    'color' => 'var(--ot-medium-tint)',
                 ],
             ],
 
@@ -149,7 +149,7 @@ class FormRule implements RuleInterface
             'min-width' => '1.25rem',
             'min-height' => '1.25rem',
             'vertical-align' => 'middle',
-            'background-color' => 'var(--lc-light-tint)',
+            'background-color' => 'var(--ot-light-tint)',
             'background-repeat' => 'no-repeat',
             'background-position' => 'center',
             'background-size' => 'contain',
@@ -169,23 +169,23 @@ class FormRule implements RuleInterface
             ],
 
             '&:checked' => [
-                'background-color' => 'var(--lc-primary)',
-                'border-color' => 'var(--lc-primary)',
-                'fill' => 'var(--lc-primary-contrast)',
-                'color' => 'var(--lc-primary-contrast)',
+                'background-color' => 'var(--ot-primary)',
+                'border-color' => 'var(--ot-primary)',
+                'fill' => 'var(--ot-primary-contrast)',
+                'color' => 'var(--ot-primary-contrast)',
 
                 '&[type="checkbox"]' => [
-                    'background-image' => 'var(--lc-form-checbox-icon)',
+                    'background-image' => 'var(--ot-form-checbox-icon)',
                 ],
 
                 '&[type="radio"]' => [
-                    'background-image' => 'var(--lc-form-checbox-icon)',
+                    'background-image' => 'var(--ot-form-checbox-icon)',
                 ],
             ],
 
             '&:disabled' => [
-                'background-color' => 'var(--lc-medium-tint)',
-                'border-color' => 'var(--lc-medium-tint)',
+                'background-color' => 'var(--ot-medium-tint)',
+                'border-color' => 'var(--ot-medium-tint)',
             ],
         ],
 
@@ -219,13 +219,13 @@ class FormRule implements RuleInterface
                 '-webkit-mask-position' => 'center',
                 'mask-position' => 'center',
 
-                'background-color' => 'var(--lc-primary)',
+                'background-color' => 'var(--ot-primary)',
                 'cursor' => 'pointer',
                 'height' => '.8rem',
                 'width' => '.8rem',
 
                 '&:hover' => [
-                    'background-color' => 'var(--lc-primary-shade)',
+                    'background-color' => 'var(--ot-primary-shade)',
                 ],
             ],
         ],
@@ -268,14 +268,14 @@ class FormRule implements RuleInterface
             ],
 
             '.form-control + .input-group-text:has(+ .form-control)' => [
-                'background-color' => 'var(--lc-base-contrast)',
+                'background-color' => 'var(--ot-base-contrast)',
                 'border-left' => '0px none',
                 'border-right' => '0px none',
             ],
 
             '.form-control + .form-select' => [
                 'width' => 'max-content',
-                'background-color' => 'var(--lc-dark-shade)',
+                'background-color' => 'var(--ot-dark-shade)',
                 'z-index' => '10',
             ],
 
@@ -292,7 +292,7 @@ class FormRule implements RuleInterface
                 'border-top-right-radius' => '0',
                 'border-bottom-right-radius' => '0',
                 'border-right-width' => '0',
-                'background-color' => 'var(--lc-body)',
+                'background-color' => 'var(--ot-body)',
             ],
             '.form-control:has( + .input-group-text)' => [
                 'border-top-right-radius' => '0',
@@ -312,7 +312,7 @@ class FormRule implements RuleInterface
             '.form-control:focus + .input-group-text' => [
                 'border-top-left-radius' => '0',
                 'border-bottom-left-radius' => '0',
-                'background-color' => 'var(--lc-body)',
+                'background-color' => 'var(--ot-body)',
             ],
             '&:has(input[type="date"]), &:has(input[type="time"])' => [
                 'width' => 'fit-content',
@@ -341,7 +341,7 @@ class FormRule implements RuleInterface
             ],
         ],
         'input-group-text' => [
-            'padding' => 'var(--lc-spacing) calc(var(--lc-spacing) * 2)',
+            'padding' => 'var(--ot-spacing) calc(var(--ot-spacing) * 2)',
             'border-radius' => '.375rem',
             'font-size' => 'inherit',
             'line-height' => 'inherit',
@@ -354,9 +354,9 @@ class FormRule implements RuleInterface
             'z-index' => '10',
             'position' => 'relative',
 
-            'color' => 'color-mix(in srgb, var(--lc-base), transparent 40%)',
-            'background-color' => 'var(--lc-light)',
-            'border' => '1px solid var(--lc-light-shade)',
+            'color' => 'color-mix(in srgb, var(--ot-base), transparent 40%)',
+            'background-color' => 'var(--ot-light)',
+            'border' => '1px solid var(--ot-light-shade)',
         ],
     ];
 
@@ -479,9 +479,9 @@ class FormRule implements RuleInterface
                     box-shadow 0.15s ease-in-out;
                 outline: 0px none;
 
-                color: var(--lc-base);
-                background-color: var(--lc-light);
-                border: 1px solid var(--lc-light);
+                color: var(--ot-base);
+                background-color: var(--ot-light);
+                border: 1px solid var(--ot-light);
 
                 > textarea,
                 > input {
@@ -499,15 +499,15 @@ class FormRule implements RuleInterface
                 }
 
                 &:read-only {
-                    color: var(--lc-base);
+                    color: var(--ot-base);
                 }
 
                 &:disabled {
-                    background-color: var(--lc-light);
-                    color: var(--lc-medium-tint);
+                    background-color: var(--ot-light);
+                    color: var(--ot-medium-tint);
 
                     &::placeholder {
-                        color: var(--lc-medium-tint);
+                        color: var(--ot-medium-tint);
                     }
                 }
 
@@ -539,9 +539,9 @@ class FormRule implements RuleInterface
                     box-shadow 0.15s ease-in-out;
                 outline: 0px none;
 
-                color: var(--lc-base);
-                background-color: var(--lc-light);
-                border: 1px solid var(--lc-light);
+                color: var(--ot-base);
+                background-color: var(--ot-light);
+                border: 1px solid var(--ot-light);
                 border-radius: .5rem;
                 padding: .5rem;
 
@@ -578,17 +578,17 @@ class FormRule implements RuleInterface
                 font-size: 1rem;
                 line-height: 1rem;
                 border-radius: .5rem;
-                color: var(--lc-base);
+                color: var(--ot-base);
                 -webkit-appearance: none;
                 -moz-appearance: none;
                 appearance: none;
-                background-color: var(--lc-light);
+                background-color: var(--ot-light);
                 background-image:
                     var(--form-select-bg-img), var(--bs-form-select-bg-icon, none);
                 background-repeat: no-repeat;
                 background-position: right 0.75rem center;
                 background-size: 16px 12px;
-                border: 1px solid var(--lc-light);
+                border: 1px solid var(--ot-light);
                 transition:
                     border-color 0.15s ease-in-out,
                     box-shadow 0.15s ease-in-out;
@@ -605,11 +605,11 @@ class FormRule implements RuleInterface
                 }
 
                 &:disabled {
-                    background-color: var(--lc-light);
-                    color: var(--lc-medium-tint);
+                    background-color: var(--ot-light);
+                    color: var(--ot-medium-tint);
 
                     &::placeholder {
-                        color: var(--lc-medium-tint);
+                        color: var(--ot-medium-tint);
                     }
                 }
 
@@ -625,7 +625,7 @@ class FormRule implements RuleInterface
                 min-height: 1.2rem;
                 margin-top: 0.25em;
                 vertical-align: top;
-                background-color: var(--lc-light-tint);
+                background-color: var(--ot-light-tint);
                 background-repeat: no-repeat;
                 background-position: center;
                 background-size: contain;
@@ -645,8 +645,8 @@ class FormRule implements RuleInterface
                 }
 
                 &:checked {
-                    background-color: var(--lc-primary);
-                    border-color: var(--lc-primary);
+                    background-color: var(--ot-primary);
+                    border-color: var(--ot-primary);
 
                     &[type="checkbox"] {
                         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%238600ef' d='M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z'/%3E%3C/svg%3E");
@@ -658,8 +658,8 @@ class FormRule implements RuleInterface
                 }
 
                 &:disabled {
-                    background-color: var(--lc-medium-tint);
-                    border-color: var(--lc-medium-tint);
+                    background-color: var(--ot-medium-tint);
+                    border-color: var(--ot-medium-tint);
                 }
             }
 
@@ -691,7 +691,7 @@ class FormRule implements RuleInterface
             .form-check-multiple {
                 .form-check-label {
                     padding: 0.375rem 0.75rem;
-                    border: 1px solid var(--lc-light);
+                    border: 1px solid var(--ot-light);
                     border-radius: .5rem;
                     cursor: pointer;
                     position: relative;
@@ -703,12 +703,12 @@ class FormRule implements RuleInterface
 
                     &:has(input:checked) {
                         padding: 0.3rem 0.675rem;
-                        border-color: var(--lc-primary);
+                        border-color: var(--ot-primary);
                         border-width: calc(1px + 0.075rem);
-                        background-color: var(--lc-primary-tint);
+                        background-color: var(--ot-primary-tint);
                         background-color: color-mix(
                             in oklab,
-                            var(--lc-primary-tint) 10%,
+                            var(--ot-primary-tint) 10%,
                             transparent
                         );
                     }
@@ -733,7 +733,7 @@ class FormRule implements RuleInterface
                     .divider {
                         flex-grow: 1;
                         height: 1rem;
-                        border-bottom: 2px dotted var(--lc-light);
+                        border-bottom: 2px dotted var(--ot-light);
                     }
 
                     .form-switch-input {
@@ -746,7 +746,7 @@ class FormRule implements RuleInterface
                             position: relative;
                             width: 3rem;
                             height: 1.5rem;
-                            background-color: var(--lc-medium-tint);
+                            background-color: var(--ot-medium-tint);
                             transition: background-color 0.2s;
                             cursor: pointer;
                             margin-left: auto;
@@ -766,7 +766,7 @@ class FormRule implements RuleInterface
                         }
 
                         &:checked + .slider {
-                            background-color: var(--lc-primary);
+                            background-color: var(--ot-primary);
 
                             &::before {
                                 transform: translateX(1.5rem);
@@ -829,9 +829,9 @@ class FormRule implements RuleInterface
                     box-shadow 0.15s ease-in-out;
                 outline: 0px none;
 
-                color: var(--lc-base);
-                background-color: var(--lc-light);
-                border: 1px solid var(--lc-light);
+                color: var(--ot-base);
+                background-color: var(--ot-light);
+                border: 1px solid var(--ot-light);
             }
 
             .d-grid
@@ -908,14 +908,14 @@ class FormRule implements RuleInterface
                     z-index: 10;
                     position: relative;
 
-                    color: color-mix(in srgb, var(--lc-base), transparent 40%);
-                    background-color: var(--lc-body-shade);
-                    border: 1px solid var(--lc-body-shade);
+                    color: color-mix(in srgb, var(--ot-base), transparent 40%);
+                    background-color: var(--ot-body-shade);
+                    border: 1px solid var(--ot-body-shade);
                 }
 
                 .input-group-subtext {
                     font-size: .8rem;
-                    color: var(--lc-light);
+                    color: var(--ot-light);
                     display: block;
                 }
 
@@ -945,14 +945,14 @@ class FormRule implements RuleInterface
                 }
 
                 .form-control + .input-group-text:has(+ .form-control) {
-                    background-color: var(--lc-base-contrast);
+                    background-color: var(--ot-base-contrast);
                     border-left: 0px none;
                     border-right: 0px none;
                 }
 
                 .form-control + .form-select {
                     width: max-content;
-                    background-color: var(--lc-dark-shade);
+                    background-color: var(--ot-dark-shade);
                     z-index: 10;
                 }
 

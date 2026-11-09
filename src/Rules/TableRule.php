@@ -90,12 +90,12 @@ class TableRule implements RuleInterface
             $value = is_numeric($rawVal) ? ($rawVal * 0.25) . 'rem' : $rawVal;
 
             return match ($axis) {
-                'x' => ['--lc-border-spacing-x' => $value, 'border-spacing' => 'var(--lc-border-spacing-x, 0) var(--lc-border-spacing-y, 0)'],
-                'y' => ['--lc-border-spacing-y' => $value, 'border-spacing' => 'var(--tlc-border-spacing-x, 0) var(--lc-border-spacing-y, 0)'],
+                'x' => ['--ot-border-spacing-x' => $value, 'border-spacing' => 'var(--ot-border-spacing-x, 0) var(--ot-border-spacing-y, 0)'],
+                'y' => ['--ot-border-spacing-y' => $value, 'border-spacing' => 'var(--tlc-border-spacing-x, 0) var(--ot-border-spacing-y, 0)'],
                 default => [
-                    '--lc-border-spacing-x' => $value,
-                    '--lc-border-spacing-y' => $value,
-                    'border-spacing' => 'var(--lc-border-spacing-x, 0) var(--lc-border-spacing-y, 0)',
+                    '--ot-border-spacing-x' => $value,
+                    '--ot-border-spacing-y' => $value,
+                    'border-spacing' => 'var(--ot-border-spacing-x, 0) var(--ot-border-spacing-y, 0)',
                 ],
             };
         }

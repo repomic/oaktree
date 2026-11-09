@@ -29,24 +29,24 @@ class BackgroundRule implements RuleInterface
         'bg-bottom' => ['background-position' => 'bottom'],
         'bg-bottom-right' => ['background-position' => 'bottom right'],
 
-        'bg-gradient-to-t' => ['background-image' => 'linear-gradient(to top, var(--lc-gradient-stops))'],
-        'bg-gradient-to-tr' => ['background-image' => 'linear-gradient(to top right, var(--lc-gradient-stops))'],
-        'bg-gradient-to-r' => ['background-image' => 'linear-gradient(to right, var(--lc-gradient-stops))'],
-        'bg-gradient-to-br' => ['background-image' => 'linear-gradient(to bottom right, var(--lc-gradient-stops))'],
-        'bg-gradient-to-b' => ['background-image' => 'linear-gradient(to bottom, var(--lc-gradient-stops))'],
-        'bg-gradient-to-bl' => ['background-image' => 'linear-gradient(to bottom left, var(--lc-gradient-stops))'],
-        'bg-gradient-to-l' => ['background-image' => 'linear-gradient(to left, var(--lc-gradient-stops))'],
-        'bg-gradient-to-tl' => ['background-image' => 'linear-gradient(to top left, var(--lc-gradient-stops))'],
+        'bg-gradient-to-t' => ['background-image' => 'linear-gradient(to top, var(--ot-gradient-stops))'],
+        'bg-gradient-to-tr' => ['background-image' => 'linear-gradient(to top right, var(--ot-gradient-stops))'],
+        'bg-gradient-to-r' => ['background-image' => 'linear-gradient(to right, var(--ot-gradient-stops))'],
+        'bg-gradient-to-br' => ['background-image' => 'linear-gradient(to bottom right, var(--ot-gradient-stops))'],
+        'bg-gradient-to-b' => ['background-image' => 'linear-gradient(to bottom, var(--ot-gradient-stops))'],
+        'bg-gradient-to-bl' => ['background-image' => 'linear-gradient(to bottom left, var(--ot-gradient-stops))'],
+        'bg-gradient-to-l' => ['background-image' => 'linear-gradient(to left, var(--ot-gradient-stops))'],
+        'bg-gradient-to-tl' => ['background-image' => 'linear-gradient(to top left, var(--ot-gradient-stops))'],
         'bg-none' => ['background-image' => 'none'],
 
-        'bg-linear-to-t' => ['background-image' => 'linear-gradient(to top, var(--lc-gradient-stops))'],
-        'bg-linear-to-tr' => ['background-image' => 'linear-gradient(to top right, var(--lc-gradient-stops))'],
-        'bg-linear-to-r' => ['background-image' => 'linear-gradient(to right, var(--lc-gradient-stops))'],
-        'bg-linear-to-br' => ['background-image' => 'linear-gradient(to bottom right, var(--lc-gradient-stops))'],
-        'bg-linear-to-b' => ['background-image' => 'linear-gradient(to bottom, var(--lc-gradient-stops))'],
-        'bg-linear-to-bl' => ['background-image' => 'linear-gradient(to bottom left, var(--lc-gradient-stops))'],
-        'bg-linear-to-l' => ['background-image' => 'linear-gradient(to left, var(--lc-gradient-stops))'],
-        'bg-linear-to-tl' => ['background-image' => 'linear-gradient(to top left, var(--lc-gradient-stops))'],
+        'bg-linear-to-t' => ['background-image' => 'linear-gradient(to top, var(--ot-gradient-stops))'],
+        'bg-linear-to-tr' => ['background-image' => 'linear-gradient(to top right, var(--ot-gradient-stops))'],
+        'bg-linear-to-r' => ['background-image' => 'linear-gradient(to right, var(--ot-gradient-stops))'],
+        'bg-linear-to-br' => ['background-image' => 'linear-gradient(to bottom right, var(--ot-gradient-stops))'],
+        'bg-linear-to-b' => ['background-image' => 'linear-gradient(to bottom, var(--ot-gradient-stops))'],
+        'bg-linear-to-bl' => ['background-image' => 'linear-gradient(to bottom left, var(--ot-gradient-stops))'],
+        'bg-linear-to-l' => ['background-image' => 'linear-gradient(to left, var(--ot-gradient-stops))'],
+        'bg-linear-to-tl' => ['background-image' => 'linear-gradient(to top left, var(--ot-gradient-stops))'],
     ];
 
     use ColorTransform;
@@ -58,7 +58,7 @@ class BackgroundRule implements RuleInterface
         }
 
         if (preg_match('/^(from|via|to)-(\d+(?:\.\d+)?%)$/', $utility, $matches)) {
-            return ["--lc-gradient-{$matches[1]}-position" => $matches[2]];
+            return ["--ot-gradient-{$matches[1]}-position" => $matches[2]];
         }
 
         if (preg_match('/^(from|via|to)-(.+)$/', $utility, $matches)) {
@@ -104,16 +104,16 @@ class BackgroundRule implements RuleInterface
 
         return match ($stop) {
             'from' => [
-                '--lc-gradient-from' => "{$color} var(--lc-gradient-from-position)",
-                '--lc-gradient-to' => 'rgb(255 255 255 / 0) var(--lc-gradient-to-position)',
-                '--lc-gradient-stops' => 'var(--lc-gradient-from), var(--lc-gradient-to)',
+                '--ot-gradient-from' => "{$color} var(--ot-gradient-from-position)",
+                '--ot-gradient-to' => 'rgb(255 255 255 / 0) var(--ot-gradient-to-position)',
+                '--ot-gradient-stops' => 'var(--ot-gradient-from), var(--ot-gradient-to)',
             ],
             'via' => [
-                '--lc-gradient-to' => 'rgb(255 255 255 / 0) var(--lc-gradient-to-position)',
-                '--lc-gradient-stops' => "var(--lc-gradient-from), {$color} var(--lc-gradient-via-position), var(--lc-gradient-to)",
+                '--ot-gradient-to' => 'rgb(255 255 255 / 0) var(--ot-gradient-to-position)',
+                '--ot-gradient-stops' => "var(--ot-gradient-from), {$color} var(--ot-gradient-via-position), var(--ot-gradient-to)",
             ],
             'to' => [
-                '--lc-gradient-to' => "{$color} var(--lc-gradient-to-position)",
+                '--ot-gradient-to' => "{$color} var(--ot-gradient-to-position)",
             ],
         };
     }

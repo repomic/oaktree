@@ -1,50 +1,17 @@
 <?php
 
 use Oaktree\Compiler;
-use Oaktree\Rules\BackgroundRule;
-use Oaktree\Rules\BorderRule;
-use Oaktree\Rules\ButtonRule;
-use Oaktree\Rules\ContainerRule;
-use Oaktree\Rules\EffectRule;
-use Oaktree\Rules\FiltersRule;
-use Oaktree\Rules\FlexboxGridRule;
-use Oaktree\Rules\FormRule;
-use Oaktree\Rules\InteractivityRule;
-use Oaktree\Rules\LayoutRule;
-use Oaktree\Rules\ListRule;
-use Oaktree\Rules\MessageRule;
-use Oaktree\Rules\SizingRule;
-use Oaktree\Rules\SpacingRule;
-use Oaktree\Rules\TransformRule;
-use Oaktree\Rules\TransitionsAnimationRule;
-use Oaktree\Rules\TypographyRule;
+use Oaktree\Components\DialogComponent;
+use Oaktree\RuleLoader;
 
 function compiler(): Compiler
 {
-    return new Compiler(
-        new LayoutRule,
-        new FlexboxGridRule,
-        new TransformRule,
-        new TransitionsAnimationRule,
-        new SizingRule,
-        new SpacingRule,
-        new BackgroundRule,
-        new TypographyRule,
-        new BorderRule,
-        new ListRule,
-        new FormRule,
-        new EffectRule,
-        new FiltersRule,
-        new InteractivityRule,
-        new ContainerRule,
-        new ButtonRule,
-        new MessageRule,
-    );
+    return new Compiler(...(new RuleLoader)->getRules());
 }
 
 it('compiles static dynamic and arbitrary utilities', function (): void {
     $css = compiler()->compile([
-        'd-flex',
+        'flex',
         'w-1/2',
         'p-[20px]',
         'bg-[#ff0000/.8]',
@@ -54,22 +21,22 @@ it('compiles static dynamic and arbitrary utilities', function (): void {
         'cursor-pointer',
     ]);
 
-    $this->assertStringContainsString(".d-flex {\ndisplay: flex;\n}", $css);
+    $this->assertStringContainsString(".flex {\ndisplay: flex;\n}", $css);
     $this->assertStringContainsString(".w-1\\/2 {\nwidth: 50%;\n}", $css);
     $this->assertStringContainsString(".p-\\[20px\\] {\npadding: 20px;\n}", $css);
     $this->assertStringContainsString('background-color: rgb(255 0 0 / 0.8);', $css);
     $this->assertStringContainsString('background-color: rgb(255 0 0 / 0.9);', $css);
     $this->assertStringContainsString('background-color: rgb(0 255 0);', $css);
-    $this->assertStringContainsString('font-size: var(--lc-text-lg);', $css);
+    $this->assertStringContainsString('font-size: var(--ot-text-lg);', $css);
     $this->assertStringContainsString('cursor: pointer;', $css);
 });
 
 it('compiles a gradient from a semantic color to purple', function (): void {
     $css = compiler()->compile(['bg-gradient-to-tr', 'from-primary-500', 'to-purple-600']);
 
-    $this->assertStringContainsString('background-image: linear-gradient(to top right, var(--lc-gradient-stops));', $css);
-    $this->assertStringContainsString('--lc-gradient-from: var(--lc-primary) var(--lc-gradient-from-position);', $css);
-    $this->assertStringContainsString('--lc-gradient-to: var(--lc-purple-600, oklch(0.558 0.288 302.321)) var(--lc-gradient-to-position);', $css);
+    $this->assertStringContainsString('background-image: linear-gradient(to top right, var(--ot-gradient-stops));', $css);
+    $this->assertStringContainsString('--ot-gradient-from: var(--ot-primary) var(--ot-gradient-from-position);', $css);
+    $this->assertStringContainsString('--ot-gradient-to: var(--ot-purple-600, oklch(0.558 0.288 302.321)) var(--ot-gradient-to-position);', $css);
 });
 
 it('applies states and breakpoints to the full selector', function (): void {
@@ -77,7 +44,40 @@ it('applies states and breakpoints to the full selector', function (): void {
 
     $this->assertStringContainsString('@media (min-width: 768px)', $css);
     $this->assertStringContainsString('.md\\:hover\\:bg-primary:hover {', $css);
-    $this->assertStringContainsString('background-color: var(--lc-primary);', $css);
+    $this->assertStringContainsString('background-color: var(--ot-primary);', $css);
+});
+
+it('compiles component media rules without requiring a breakpoint utility class', function (): void {
+    $css = compiler()
+        ->registerRule(new DialogComponent)
+        ->compile(['drawer']);
+    $mediaQuery = '@media (width < 768px)';
+    $mediaQueryPosition = strpos($css, $mediaQuery);
+
+    expect($mediaQueryPosition)->not->toBeFalse();
+    expect(substr($css, 0, $mediaQueryPosition))->not->toContain('width: 100%;');
+    expect(substr($css, $mediaQueryPosition))->toContain('.drawer {');
+    expect(substr($css, $mediaQueryPosition))->toContain('width: 100%;');
+    expect(substr($css, $mediaQueryPosition))->toContain('transform: translateY(100%);');
+    expect(substr($css, $mediaQueryPosition))->toContain('.drawer[open] {');
+    expect(substr($css, $mediaQueryPosition))->toContain('transform: translateY(0);');
+});
+
+it('provides the default rules to the compiler', function (): void {
+    $css = (new Compiler(...(new RuleLoader)->getRules()))->compile(['flex', 'drawer']);
+
+    expect($css)->toContain(".flex {\ndisplay: flex;");
+    expect($css)->toContain('.drawer {');
+});
+
+it('wraps starting-style selectors in the starting-style at-rule', function (): void {
+    $css = compiler()
+        ->registerRule(new DialogComponent)
+        ->compile(['drawer']);
+
+    expect($css)->toContain("@starting-style {\n  .drawer[open] {");
+    expect($css)->toContain('.drawer[open]::backdrop {');
+    expect($css)->not->toContain('.drawer @starting-style[open]');
 });
 
 it('flattens nested component rules', function (): void {
@@ -85,7 +85,7 @@ it('flattens nested component rules', function (): void {
 
     $this->assertStringContainsString('.btn {', $css);
     $this->assertStringContainsString('.btn:hover {', $css);
-    $this->assertStringContainsString('background-color: var(--lc-primary-tint);', $css);
+    $this->assertStringContainsString('background-color: var(--ot-primary-tint);', $css);
     $this->assertStringContainsString('.btn.icon-only {', $css);
 });
 

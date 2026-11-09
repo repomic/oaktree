@@ -9,7 +9,7 @@ interface RuleInterface
 {
     /**
      * Should return an array containing all css
-     * e.g., [--lc-scale-x' => '0.9', 'transform' => 'var(...)']
+     * e.g., [--ot-scale-x' => '0.9', 'transform' => 'var(...)']
      */
     public function handle(string $utility, Compiler $compiler): array|Css|null;
 }

@@ -1,10 +1,11 @@
 <?php
 
-namespace Oaktree\Rules;
+namespace Oaktree\Components;
 
 use Oaktree\Compiler;
+use Oaktree\Rules\RuleInterface;
 
-class MessageRule implements RuleInterface
+class MessageComponent implements RuleInterface
 {
     /**
      * Pre-defined component abstractions.
@@ -90,10 +91,10 @@ class MessageRule implements RuleInterface
             };
 
             $font_size = match ($size) {
-                'sm' => 'var(--lc-text-sm)',
-                'md' => 'var(--lc-text-md)',
-                'lg' => 'var(--lc-text-lg)',
-                'xl' => 'var(--lc-text-xl)',
+                'sm' => 'var(--ot-text-sm)',
+                'md' => 'var(--ot-text-md)',
+                'lg' => 'var(--ot-text-lg)',
+                'xl' => 'var(--ot-text-xl)',
             };
 
             return [

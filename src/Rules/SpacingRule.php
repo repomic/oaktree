@@ -119,19 +119,19 @@ class SpacingRule implements RuleInterface
             if ($axis === 'x') {
                 return [
                     'vars' => [
-                        '--lc-space-x-reverse' => '0',
+                        '--ot-space-x-reverse' => '0',
                     ],
-                    'margin-right' => 'calc(' . $rem . ' * var(--lc-space-x-reverse))',
-                    'margin-left' => 'calc(' . $rem . ' * calc(1 - var(--lc-space-x-reverse)))',
+                    'margin-right' => 'calc(' . $rem . ' * var(--ot-space-x-reverse))',
+                    'margin-left' => 'calc(' . $rem . ' * calc(1 - var(--ot-space-x-reverse)))',
                 ];
             }
 
             return [
                 'vars' => [
-                    '--lc-space-y-reverse' => '0',
+                    '--ot-space-y-reverse' => '0',
                 ],
-                'margin-bottom' => 'calc(' . $rem . ' * var(--lc-space-y-reverse))',
-                'margin-top' => 'calc(' . $rem . ' * calc(1 - var(--lc-space-y-reverse)))',
+                'margin-bottom' => 'calc(' . $rem . ' * var(--ot-space-y-reverse))',
+                'margin-top' => 'calc(' . $rem . ' * calc(1 - var(--ot-space-y-reverse)))',
             ];
         }
 

@@ -21,14 +21,14 @@ class FiltersRule implements RuleInterface
                 return null;
             }
 
-            $filters[] = "--lc-filter-drop-shadow: drop-shadow(.1rem 0 0 {$rgb}) drop-shadow(-.1rem 0 0 {$rgb}) drop-shadow(0 .1rem 0 {$rgb}) drop-shadow(0 -.1rem 0 {$rgb});";
+            $filters[] = "--ot-filter-drop-shadow: drop-shadow(.1rem 0 0 {$rgb}) drop-shadow(-.1rem 0 0 {$rgb}) drop-shadow(0 .1rem 0 {$rgb}) drop-shadow(0 -.1rem 0 {$rgb});";
 
             return $filters;
         }
 
         if ($utility === 'drop-shadow') {
             $filters['filter'] = $this->makeDefaultFilterString('filter');
-            $filters[] = '--lc-filter-drop-shadow: drop-shadow(0 0px 6px rgba(0, 0, 0, 0.2));';
+            $filters[] = '--ot-filter-drop-shadow: drop-shadow(0 0px 6px rgba(0, 0, 0, 0.2));';
 
             return $filters;
         }
@@ -45,7 +45,7 @@ class FiltersRule implements RuleInterface
 
             if ($value) {
                 $filters[$type] = $this->makeDefaultFilterString($type);
-                $filters[] = '--lc-' . $type . '-' . $filter . ': ' . $filter . '(' . $value . ');';
+                $filters[] = '--ot-' . $type . '-' . $filter . ': ' . $filter . '(' . $value . ');';
             }
 
             return $filters;
@@ -83,6 +83,6 @@ class FiltersRule implements RuleInterface
 
     protected function makeDefaultFilterString(string $filter)
     {
-        return 'var(--lc-' . $filter . '-blur, ) var(--lc-' . $filter . '-brightness, ) var(--lc-' . $filter . '-contrast, ) var(--lc-' . $filter . '-grayscale, ) var(--lc-' . $filter . '-hue-rotate, ) var(--lc-' . $filter . '-invert, ) var(--lc-' . $filter . '-saturate, ) var(--lc-' . $filter . '-sepia, ) var(--lc-' . $filter . '-drop-shadow, ) var(--lc-' . $filter . '-opacity, );';
+        return 'var(--ot-' . $filter . '-blur, ) var(--ot-' . $filter . '-brightness, ) var(--ot-' . $filter . '-contrast, ) var(--ot-' . $filter . '-grayscale, ) var(--ot-' . $filter . '-hue-rotate, ) var(--ot-' . $filter . '-invert, ) var(--ot-' . $filter . '-saturate, ) var(--ot-' . $filter . '-sepia, ) var(--ot-' . $filter . '-drop-shadow, ) var(--ot-' . $filter . '-opacity, );';
     }
 }

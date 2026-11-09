@@ -23,6 +23,17 @@ class SizingRule implements RuleInterface
         'h-min' => ['height' => 'min-content'],
         'h-max' => ['height' => 'max-content'],
         'min-w-fit' => ['min-width' => 'fit-content'],
+        'min-h-fit' => ['min-height' => 'fit-content'],
+        'min-w-0' => ['min-width' => '0'],
+        'min-h-0' => ['min-height' => '0'],
+        'max-w-0' => ['max-width' => '0'],
+        'max-h-0' => ['max-height' => '0'],
+        'min-w-full' => ['min-width' => '100%'],
+        'min-h-full' => ['min-height' => '100%'],
+        'max-w-screen' => ['max-width' => '100vw'],
+        'max-h-screen' => ['max-height' => '100vh'],
+        'w-fit' => ['width' => 'fit-content'],
+        'h-fit' => ['height' => 'fit-content'],
     ];
 
     public function handle(string $utility, Compiler $compiler): ?array

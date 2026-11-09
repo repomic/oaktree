@@ -8,7 +8,7 @@ class LayoutRule implements RuleInterface
 {
     protected array $static = [
         'aspect-square' => ['aspect-ratio' => '1/1'],
-        'aspect-video' => ['aspect-ratio' => 'var(--lc-aspect-video, 16/9)'],
+        'aspect-video' => ['aspect-ratio' => 'var(--ot-aspect-video, 16/9)'],
         'aspect-auto' => ['aspect-ratio' => 'auto'],
 
         'd-block' => ['display' => 'block'],
@@ -27,6 +27,7 @@ class LayoutRule implements RuleInterface
         'grid' => ['display' => 'grid'],
         'inline-grid' => ['display' => 'inline-grid'],
         'inline-flex' => ['display' => 'inline-flex'],
+        'hidden' => ['display' => 'none'],
 
         'float-left' => ['float' => 'left'],
         'float-right' => ['float' => 'right'],
@@ -62,14 +63,6 @@ class LayoutRule implements RuleInterface
         'overscroll-y-auto' => ['overscroll-behavior-y' => 'auto'],
         'overscroll-y-contain' => ['overscroll-behavior-y' => 'contain'],
         'overscroll-y-none' => ['overscroll-behavior-y' => 'none'],
-
-        'block' => ['display' => 'block'],
-        'inline-block' => ['display' => 'inline-block'],
-        'inline' => ['display' => 'inline'],
-        'flex' => ['display' => 'flex'],
-        'inline-flex' => ['display' => 'inline-flex'],
-        'grid' => ['display' => 'grid'],
-        'hidden' => ['display' => 'none'],
 
         'visible' => ['visibility' => 'visible'],
         'invisible' => ['visibility' => 'hidden'],
@@ -130,7 +123,6 @@ box-decoration-break
                 'bottom' => ['bottom' => $value],
                 'left' => ['left' => $value],
                 'right' => ['right' => $value],
-                'gap' => ['gap' => $value],
                 default => null,
             };
         }
@@ -145,7 +137,6 @@ box-decoration-break
                 'bottom' => ['bottom' => $rem],
                 'left' => ['left' => $rem],
                 'right' => ['right' => $rem],
-                'gap' => ['gap' => $rem],
                 default => null
             };
         }

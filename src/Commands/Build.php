@@ -76,6 +76,8 @@ class Build extends Command
         $tokens = $extractor->scan($watch_paths, $extensions);
 
         // dd(array_search('form-control-date', $tokens));
+        $internal_normalize_css = $this->getOptionalFile($this->getPackagePath('resources/normalize.css'));
+        $internal_preflight_css = $this->getOptionalFile($this->getPackagePath('resources/css/base.css'));
 
         $normalize_css = $this->getOptionalFile(resource_path('css/normalize.css'));
         $preflight_css = $this->getOptionalFile(resource_path('css/base.css'));
@@ -83,7 +85,9 @@ class Build extends Command
         $generated_css = $compiler->compile($tokens);
 
         $full_css = implode("\n\n", array_filter([
+            $internal_normalize_css,
             $normalize_css,
+            $internal_preflight_css,
             $preflight_css,
             $generated_css,
         ]));
@@ -100,6 +104,11 @@ class Build extends Command
         $this->info("Compiled CSS to {$output_path}");
 
         return Command::SUCCESS;
+    }
+
+    protected function getPackagePath(string $path): string
+    {
+        return realpath(__DIR__ . '/../../' . $path);
     }
 
     protected function getOptionalFile(string $path): string

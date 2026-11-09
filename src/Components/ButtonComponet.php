@@ -1,10 +1,11 @@
 <?php
 
-namespace Oaktree\Rules;
+namespace Oaktree\Components;
 
 use Oaktree\Compiler;
+use Oaktree\Rules\RuleInterface;
 
-class ButtonRule implements RuleInterface
+class ButtonComponet implements RuleInterface
 {
     /**
      * Pre-defined component abstractions.
@@ -19,152 +20,152 @@ class ButtonRule implements RuleInterface
             'border-radius' => '0.375rem',
             'font-weight' => '500',
             'transition' => 'background-color 0.15s ease-in-out, border-color 0.15s ease-in-out',
-            'background-color' => 'var(--lc-primary)',
-            'color' => 'var(--lc-primary-contrast)',
+            'background-color' => 'var(--ot-primary)',
+            'color' => 'var(--ot-primary-contrast)',
             'text-align' => 'center',
             'cursor' => 'pointer',
-            'border' => '1px solid var(--lc-primary)',
+            'border' => '1px solid var(--ot-primary)',
             'position' => 'relative',
             '&:hover' => [
-                'background-color' => 'var(--lc-primary-tint)',
-                'color' => 'var(--lc-primary-contrast)',
+                'background-color' => 'var(--ot-primary-tint)',
+                'color' => 'var(--ot-primary-contrast)',
                 'text-decoration' => 'none',
             ],
             '&.outline' => [
                 'background-color' => 'transparent',
-                'color' => 'var(--lc-primary)',
-                'border-color' => 'var(--lc-primary)',
+                'color' => 'var(--ot-primary)',
+                'border-color' => 'var(--ot-primary)',
                 'border-width' => '1px',
                 'border-style' => 'solid',
                 '&:hover' => [
-                    'background-color' => 'var(--lc-primary-tint)',
-                    'color' => 'var(--lc-primary-contrast)',
+                    'background-color' => 'var(--ot-primary-tint)',
+                    'color' => 'var(--ot-primary-contrast)',
                 ],
             ],
             '& > i' => ['line-height: 1.25rem'],
             '&.icon-only' => ['font-size' => '1.25rem'],
         ],
         'btn-dropdown' => [
-            'background-color' => 'var(--lc-light-shade)',
-            'border-color' => 'var(--lc-secondary)',
-            'color' => 'var(--lc-secondary-contrast)',
+            'background-color' => 'var(--ot-light-shade)',
+            'border-color' => 'var(--ot-secondary)',
+            'color' => 'var(--ot-secondary-contrast)',
             '&:not(.appearance-none):hover' => [
-                'background-color' => 'var(--lc-medium-tint)',
-                'color' => 'var(--lc-secondary-contrast)',
-                'border-color' => 'var(--lc-medium-tint)',
+                'background-color' => 'var(--ot-medium-tint)',
+                'color' => 'var(--ot-secondary-contrast)',
+                'border-color' => 'var(--ot-medium-tint)',
             ],
             '&.active:not(.appearance-none)' => [
-                'background-color' => 'var(--lc-medium-tint)',
-                'color' => 'var(--lc-secondary-contrast)',
-                'border-color' => 'var(--lc-medium-tint)',
+                'background-color' => 'var(--ot-medium-tint)',
+                'color' => 'var(--ot-secondary-contrast)',
+                'border-color' => 'var(--ot-medium-tint)',
             ],
             '&.btn-outline' => [
                 'background-color' => 'transparent',
-                'border-color' => 'var(--lc-primary)',
-                'color' => 'var(--lc-primary)',
+                'border-color' => 'var(--ot-primary)',
+                'color' => 'var(--ot-primary)',
                 '&:not(.appearance-none):hover' => [
-                    'background-color' => 'var(--lc-primary)',
-                    'color' => 'var(--lc-primary-contrast)',
-                    'border-color' => 'var(--lc-primary)',
+                    'background-color' => 'var(--ot-primary)',
+                    'color' => 'var(--ot-primary-contrast)',
+                    'border-color' => 'var(--ot-primary)',
                 ],
                 '&.active:not(.appearance-none)' => [
-                    'background-color' => 'var(--lc-primary)',
-                    'color' => 'var(--lc-primary-contrast)',
-                    'border-color' => 'var(--lc-primary)',
+                    'background-color' => 'var(--ot-primary)',
+                    'color' => 'var(--ot-primary-contrast)',
+                    'border-color' => 'var(--ot-primary)',
                 ],
             ],
         ],
         'btn-outline' => [
             'background-color' => 'transparent',
-            'border-color' => 'var(--lc-primary)',
-            'color' => 'var(--lc-primary)',
+            'border-color' => 'var(--ot-primary)',
+            'color' => 'var(--ot-primary)',
             '&:not(.appearance-none):hover' => [
-                'background-color' => 'var(--lc-primary)',
-                'color' => 'var(--lc-primary-contrast)',
-                'border-color' => 'var(--lc-primary)',
+                'background-color' => 'var(--ot-primary)',
+                'color' => 'var(--ot-primary-contrast)',
+                'border-color' => 'var(--ot-primary)',
             ],
             '&.active:not(.appearance-none)' => [
-                'background-color' => 'var(--lc-primary)',
-                'color' => 'var(--lc-primary-contrast)',
-                'border-color' => 'var(--lc-primary)',
+                'background-color' => 'var(--ot-primary)',
+                'color' => 'var(--ot-primary-contrast)',
+                'border-color' => 'var(--ot-primary)',
             ],
         ],
         'btn-ghost' => [
             'background-color' => 'transparent',
             'border-color' => 'transparent',
-            'color' => 'var(--lc-primary)',
+            'color' => 'var(--ot-primary)',
             '&:not(.appearance-none):hover' => [
-                'background-color' => 'var(--lc-primary)',
-                'color' => 'var(--lc-primary-contrast)',
-                'border-color' => 'var(--lc-primary)',
+                'background-color' => 'var(--ot-primary)',
+                'color' => 'var(--ot-primary-contrast)',
+                'border-color' => 'var(--ot-primary)',
             ],
             '&.active:not(.appearance-none)' => [
-                'background-color' => 'var(--lc-primary)',
-                'color' => 'var(--lc-primary-contrast)',
-                'border-color' => 'var(--lc-primary)',
+                'background-color' => 'var(--ot-primary)',
+                'color' => 'var(--ot-primary-contrast)',
+                'border-color' => 'var(--ot-primary)',
             ],
         ],
         'btn-tertiary' => [
-            'background-color' => 'var(--lc-tertiary-shade)',
-            'border-color' => 'var(--lc-tertiary-shade)',
-            'color' => 'var(--lc-tertiary-contrast)',
+            'background-color' => 'var(--ot-tertiary-shade)',
+            'border-color' => 'var(--ot-tertiary-shade)',
+            'color' => 'var(--ot-tertiary-contrast)',
             '&:not(.appearance-none):hover' => [
-                'background-color' => 'var(--lc-tertiary)',
-                'border-color' => 'var(--lc-tertiary)',
-                'color' => 'var(--lc-tertiary-contrast)',
+                'background-color' => 'var(--ot-tertiary)',
+                'border-color' => 'var(--ot-tertiary)',
+                'color' => 'var(--ot-tertiary-contrast)',
             ],
             '&.active:not(.appearance-none)' => [
-                'background-color' => 'var(--lc-tertiary)',
-                'border-color' => 'var(--lc-tertiary)',
-                'color' => 'var(--lc-tertiary-contrast)',
+                'background-color' => 'var(--ot-tertiary)',
+                'border-color' => 'var(--ot-tertiary)',
+                'color' => 'var(--ot-tertiary-contrast)',
             ],
         ],
         'btn-secondary' => [
-            'background-color' => 'var(--lc-light-shade)',
-            'border-color' => 'var(--lc-secondary)',
-            'color' => 'var(--lc-secondary-contrast)',
+            'background-color' => 'var(--ot-light-shade)',
+            'border-color' => 'var(--ot-secondary)',
+            'color' => 'var(--ot-secondary-contrast)',
             '&:not(.appearance-none):hover' => [
-                'background-color' => 'var(--lc-medium-tint)',
-                'color' => 'var(--lc-secondary-contrast)',
-                'border-color' => 'var(--lc-medium-tint)',
+                'background-color' => 'var(--ot-medium-tint)',
+                'color' => 'var(--ot-secondary-contrast)',
+                'border-color' => 'var(--ot-medium-tint)',
             ],
             '&.active:not(.appearance-none)' => [
-                'background-color' => 'var(--lc-medium-tint)',
-                'color' => 'var(--lc-secondary-contrast)',
-                'border-color' => 'var(--lc-medium-tint)',
+                'background-color' => 'var(--ot-medium-tint)',
+                'color' => 'var(--ot-secondary-contrast)',
+                'border-color' => 'var(--ot-medium-tint)',
             ],
         ],
         'btn-primary' => [
-            'background-color' => 'var(--lc-primary)',
-            'color' => 'var(--lc-primary-contrast)',
+            'background-color' => 'var(--ot-primary)',
+            'color' => 'var(--ot-primary-contrast)',
             // Child / state declarations
             '&:hover' => [
-                'background-color' => 'var(--lc-primary-tint)',
-                'color' => 'var(--lc-primary-contrast)',
+                'background-color' => 'var(--ot-primary-tint)',
+                'color' => 'var(--ot-primary-contrast)',
             ],
         ],
 
         'btn-danger' => [
-            'background-color' => 'var(--lc-danger)',
-            'border-color' => 'var(--lc-danger)',
-            'color' => 'var(--lc-danger-contrast)',
+            'background-color' => 'var(--ot-danger)',
+            'border-color' => 'var(--ot-danger)',
+            'color' => 'var(--ot-danger-contrast)',
 
             '&:not(.appearance-none):hover, &.active:not(.appearance-none)' => [
-                'background-color' => 'var(--lc-danger-tint)',
-                'border-color' => 'var(--lc-danger-tint)',
-                'color' => 'var(--lc-danger-contrast)',
+                'background-color' => 'var(--ot-danger-tint)',
+                'border-color' => 'var(--ot-danger-tint)',
+                'color' => 'var(--ot-danger-contrast)',
             ],
         ],
 
         'btn-warning' => [
-            'background-color' => 'var(--lc-warning)',
-            'border-color' => 'var(--lc-warning)',
-            'color' => 'var(--lc-warning-contrast)',
+            'background-color' => 'var(--ot-warning)',
+            'border-color' => 'var(--ot-warning)',
+            'color' => 'var(--ot-warning-contrast)',
 
             '&:not(.appearance-none):hover, &.active:not(.appearance-none)' => [
-                'background-color' => 'var(--lc-warning-tint)',
-                'border-color' => 'var(--lc-warning-tint)',
-                'color' => 'var(--lc-warning-contrast)',
+                'background-color' => 'var(--ot-warning-tint)',
+                'border-color' => 'var(--ot-warning-tint)',
+                'color' => 'var(--ot-warning-contrast)',
             ],
         ],
         'card' => [
@@ -180,8 +181,8 @@ class ButtonRule implements RuleInterface
 
             '& .btn' => [
                 'flex' => '1 1 auto',
-                'padding-left' => 'calc(var(--lc-spacing) * 2)',
-                'padding-right' => 'calc(var(--lc-spacing) * 2)',
+                'padding-left' => 'calc(var(--ot-spacing) * 2)',
+                'padding-right' => 'calc(var(--ot-spacing) * 2)',
             ],
 
             '& .btn:not(:first-of-type)' => [
@@ -195,8 +196,8 @@ class ButtonRule implements RuleInterface
             ],
 
             '& .btn-group .btn' => [
-                'padding-left' => 'calc(var(--lc-spacing) * 2)',
-                'padding-right' => 'calc(var(--lc-spacing) * 2)',
+                'padding-left' => 'calc(var(--ot-spacing) * 2)',
+                'padding-right' => 'calc(var(--ot-spacing) * 2)',
                 'flex' => '1 1 auto',
             ],
 
@@ -222,8 +223,8 @@ class ButtonRule implements RuleInterface
 
             '&.narrow-divider' => [
                 '& .btn' => [
-                    'padding-left' => 'calc(var(--lc-spacing) * 2)',
-                    'padding-right' => 'calc(var(--lc-spacing) * 2)',
+                    'padding-left' => 'calc(var(--ot-spacing) * 2)',
+                    'padding-right' => 'calc(var(--ot-spacing) * 2)',
                 ],
             ],
         ],
@@ -259,7 +260,7 @@ class ButtonRule implements RuleInterface
             '& hr' => [
                 'margin-top' => '.5rem',
                 'margin-bottom' => '.5rem',
-                'border-color' => 'var(--lc-light-shade)',
+                'border-color' => 'var(--ot-light-shade)',
                 'display' => 'none',
             ],
             '& * + hr' => [
@@ -282,7 +283,7 @@ class ButtonRule implements RuleInterface
                 'text-align' => 'initial',
                 'white-space' => 'wrap',
                 '&:hover' => [
-                    'background-color' => 'var(--lc-light)',
+                    'background-color' => 'var(--ot-light)',
                     'text-decoration' => 'none',
                 ],
                 '& small' => [
@@ -320,10 +321,10 @@ class ButtonRule implements RuleInterface
             };
 
             $font_size = match ($size) {
-                'sm' => 'var(--lc-text-sm)',
-                'md' => 'var(--lc-text-md)',
-                'lg' => 'var(--lc-text-lg)',
-                'xl' => 'var(--lc-text-xl)',
+                'sm' => 'var(--ot-text-sm)',
+                'md' => 'var(--ot-text-md)',
+                'lg' => 'var(--ot-text-lg)',
+                'xl' => 'var(--ot-text-xl)',
             };
 
             return [

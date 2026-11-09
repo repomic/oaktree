@@ -1,0 +1,138 @@
+/* Base colors */
+
+/*
+ * Follow calculations will be break html2canvas and other tools:
+ *  --ot-primary-shade: hsl(from var(--ot-primary) h s calc(l - 5));
+
+ * contrasts are contrasting color to base color
+ * tints are +5% light added to hsl-version of base color.
+ * shades are +5% light added to hsl-version of base color.
+ */
+
+:root { 
+    --ot-primary: #024d6b;
+    --ot-primary-contrast: #ffffff;
+    --ot-primary-tint: #013b52; /* hsl(197.1deg 96.6% 16.4%) */ 
+    --ot-primary-shade: #011720; /* hsl(197.1deg 96.6% 6.4%) */
+
+    --ot-secondary: #f0ede5;
+    --ot-secondary-contrast: #2f2f2f;
+    --ot-secondary-tint: #f6f4ef; /* hsl(43.6deg 26.8% 95.0%) */
+    --ot-secondary-shade: #e7e2d5; /* hsl(43.6deg 26.8% 87.0%) */
+
+    --ot-tertiary: #99a658;
+    --ot-tertiary-contrast: #111608;
+    --ot-tertiary-tint: #a3af68; /* hsl(70.0deg 30.7% 54.8%) */
+    --ot-tertiary-shade: #8a954f; /* hsl(70.0deg 30.7% 44.8%) */
+
+    --ot-dark: #2f2f2f;
+    --ot-dark-contrast: #ffffff;
+    --ot-dark-tint: #3c3c3c; /* hsl(0deg 0% 23.4%) */
+    --ot-dark-shade: #222222; /* hsl(0deg 0% 13.4%) */
+
+    --ot-medium: #808080;
+    --ot-medium-contrast: #ffffff;
+    --ot-medium-tint: #8d8d8d; /* hsl(0deg 0% 55.2%) */
+    --ot-medium-shade: #737373; /* hsl(0deg 0% 45.2%) */
+
+    --ot-light: #f0f0f0;
+    --ot-light-contrast: #000000;
+    --ot-light-tint: #fdfdfd; /* hsl(0deg 0% 99.1%) */
+    --ot-light-shade: #dadada;
+
+    --ot-base: #000000;
+    --ot-base-contrast: #ffffff;
+    --ot-base-tint: #0d0d0d; /* hsl(0deg 0% 5.0%) */
+    --ot-base-shade: #000000; /* hsl(0deg 0% 0.0%) */
+
+    --ot-body: #fafaf7;
+    --ot-body-contrast: #000000;
+    --ot-body-tint: #ffffff; /* hsl(0deg 0% 100.0%) */
+    --ot-body-shade: #f2f2f2; /* hsl(0deg 0% 95.0%) */
+
+    --ot-success: #24ae49;
+    --ot-success-contrast: #ffffff;
+    --ot-success-tint: #28c352; /* hsl(136.1deg 65.7% 46.2%) */
+    --ot-success-shade: #209940; /* hsl(136.1deg 65.7% 36.2%) */
+
+    --ot-info: #006ab8;
+    --ot-info-contrast: #ffffff;
+    --ot-info-tint: #15a8ff; /* hsl(202.2deg 100% 54.2%) */
+    --ot-info-shade: #008ee2; /* hsl(202.2deg 100% 44.2%) */
+
+    --ot-warning: #ffc409;
+    --ot-warning-contrast: #000000;
+    --ot-warning-tint: #ffca23; /* hsl(45.6deg 100% 56.8%) */
+    --ot-warning-shade: #efb500; /* hsl(45.6deg 100% 46.8%) */
+
+    --ot-danger: #c5000f;
+    --ot-danger-contrast: #ffffff;
+    --ot-danger-tint: #df0011; /* hsl(355.4deg 100% 43.6%) */
+    --ot-danger-shade: #ac000d; /* hsl(355.4deg 100% 33.6%) */
+
+    --ot-exceptional: #df0ddf;
+    --ot-exceptional-contrast: #ffffff;
+    --ot-exceptional-tint: #f114f1; /* hsl(300.0deg 89.0% 51.3%) */
+    --ot-exceptional-shade: #c70cc7; /* hsl(300.0deg 89.0% 41.3%) */
+
+    --ot-process: #16ebeb;
+    --ot-process-contrast: #000000;
+    --ot-process-tint: #2deded; /* hsl(180.0deg 84.2% 55.4%) */
+    --ot-process-shade: #12d5d5; /* hsl(180.0deg 84.2% 45.4%) */
+
+    --ot-transparent: transparent;
+
+    --ot-spacing: .25rem;
+
+    --ot-font-family: Inter, Arial, Helvetica, sans-serif;
+
+    --ot-text-base: 1rem;                               /* 16px */
+    --ot-text-4xl: calc(5/2 * var(--ot-text-base));     /* 2.5rem / 40px */
+    --ot-text-3xl: calc(15/8 * var(--ot-text-base));    /* 1.875rem / 30px */
+    --ot-text-2xl: calc(3/2 * var(--ot-text-base));     /* 1.5rem / 24px */
+    --ot-text-xl: calc(5/4 * var(--ot-text-base));      /* 1.25rem / 20px */
+    --ot-text-lg: calc(9/8 * var(--ot-text-base));      /* 1.125rem / 18px */
+    --ot-text-md: var(--ot-text-base);                  /* 1rem / 16px */
+    --ot-text-sm: calc(7/8 * var(--ot-text-base));      /* 0.875rem / 14px */
+    --ot-text-xs: calc(3/4 * var(--ot-text-base));      /* 0.75rem / 12px */
+    --ot-text-2xs: calc(5/8 * var(--ot-text-base));     /* 0.625rem / 10px */
+
+    --ot-form-checbox-icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23ffffff" d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>');
+    --ot-form-select-dd-icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="none" stroke="%23000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m2 5 6 6 6-6" /></svg>');
+
+    --ot-space-y-reverse : 0;
+    --ot-space-x-reverse : 0;
+    --ot-space-y: 0;
+    --ot-space-x: 0;
+
+
+    --ot-gradient-from-position: 0%;
+    --ot-gradient-to-position: 100%;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;
+    line-height: 1.25;
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+    -webkit-text-size-adjust: 100%;
+    scrollbar-gutter: stable;
+}
+
+
+body {
+    font-optical-sizing: auto;
+    text-rendering: optimizeSpeed;
+    word-wrap: break-word;
+    hyphens: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: var(--ot-text-base);
+    background-color: var(--ot-body );
+    color: var(--ot-base);
+}

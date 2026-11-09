@@ -24,7 +24,7 @@ class TransformRule implements RuleInterface
         // Transform base presets
         'transform-none' => ['transform' => 'none'],
         'transform-gpu' => [
-            'transform' => 'translate3d(var(--lc-translate-x, 0), var(--lc-translate-y, 0), 0) rotate(var(--lc-rotate, 0)) skewX(var(--lc-skew-x, 0)) skewY(var(--lc-skew-y, 0)) scaleX(var(--lc-scale-x, 1)) scaleY(var(--lc-scale-y, 1))',
+            'transform' => 'translate3d(var(--ot-translate-x, 0), var(--ot-translate-y, 0), 0) rotate(var(--ot-rotate, 0)) skewX(var(--ot-skew-x, 0)) skewY(var(--ot-skew-y, 0)) scaleX(var(--ot-scale-x, 1)) scaleY(var(--ot-scale-y, 1))',
         ],
 
         // Transform origins
@@ -61,15 +61,15 @@ class TransformRule implements RuleInterface
         }
 
         $transform = [
-            'transform' => 'translate(var(--lc-translate-x, 0), var(--lc-translate-y, 0)) rotate(var(--lc-rotate, 0)) scaleX(var(--lc-scale-x, 1)) scaleY(var(--lc-scale-y, 1))',
+            'transform' => 'translate(var(--ot-translate-x, 0), var(--ot-translate-y, 0)) rotate(var(--ot-rotate, 0)) scaleX(var(--ot-scale-x, 1)) scaleY(var(--ot-scale-y, 1))',
         ];
 
         if (preg_match('/^translate-(x|y)-(?:\[([^\]]+)\]|(\d+))$/', $utility, $matches)) {
             $value = $matches[2] !== ''
                 ? $matches[2]
-                : 'calc(var(--lc-spacing) * ' . $matches[3] . ')';
+                : 'calc(var(--ot-spacing) * ' . $matches[3] . ')';
 
-            return $transform + ['--lc-translate-' . $matches[1] => $value];
+            return $transform + ['--ot-translate-' . $matches[1] => $value];
         }
 
         if (preg_match('/^(-?)rotate-(?:\[([^\]]+)\]|(\d+))$/', $utility, $matches)) {
@@ -79,7 +79,7 @@ class TransformRule implements RuleInterface
                 $value = 'calc(0deg - ' . $value . ')';
             }
 
-            return $transform + ['--lc-rotate' => $value];
+            return $transform + ['--ot-rotate' => $value];
         }
 
         if (preg_match('/^scale(?:-(x|y))?-(?:\[([^\]]+)\]|(\d+))$/', $utility, $matches)) {
@@ -87,9 +87,9 @@ class TransformRule implements RuleInterface
             $axis = $matches[1] ?? '';
 
             return $transform + match ($axis) {
-                'x' => ['--lc-scale-x' => $value],
-                'y' => ['--lc-scale-y' => $value],
-                default => ['--lc-scale-x' => $value, '--lc-scale-y' => $value],
+                'x' => ['--ot-scale-x' => $value],
+                'y' => ['--ot-scale-y' => $value],
+                default => ['--ot-scale-x' => $value, '--ot-scale-y' => $value],
             };
         }
 

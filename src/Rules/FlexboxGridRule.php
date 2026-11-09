@@ -86,6 +86,8 @@ class FlexboxGridRule implements RuleInterface
         'order-none' => ['order' => 'unset'],
         'order-first' => ['order' => '-9999'],
         'order-last' => ['order' => '9999'],
+
+        'grid-flow-column' => ['grid-auto-flow' => 'column'],
         /*
 columns
 break-after
@@ -120,8 +122,12 @@ visibility
             return ['grid-column-start' => "span {$matches[1]}"];
         }
 
-        if (preg_match('/^(grid-)?rows-(\d+)$/', $utility, $matches)) {
-            return ['grid-template-rows' => "repeat({$matches[2]}, minmax(0, 1fr))"];
+        if (preg_match('/^(grid-)?rows-(?:\[(.*)\]|(\d+))$/', $utility, $matches)) {
+            if (!empty($matches[2])) {
+                return ['grid-template-rows' => $this->normalizeValue($matches[2])];
+            }
+
+            return ['grid-template-rows' => "repeat({$matches[3]}, minmax(0, 1fr))"];
         }
 
         if (preg_match('/^(row-span)-(\d+)$/', $utility, $matches)) {
@@ -170,33 +176,15 @@ visibility
             return ['order' => $matches[2]];
         }
 
-        // Handle top, bottom, left, right with arbitrary values: top-[20px], bottom-[10%], left-[5rem], right-[2em]
-        if (preg_match('/^(gap)-\[(.+)\]$/', $utility, $matches)) {
+        if (preg_match('/^(gap(?:-[xy])?)-(?:\[(.+)\]|(\d+))$/', $utility, $matches, PREG_UNMATCHED_AS_NULL)) {
             $prop = $matches[1];
-            $value = $matches[2];
+            $value = isset($matches[2]) ? $matches[2] : (($matches[3] * 0.25) . 'rem');
 
             return match ($prop) {
-                'top' => ['top' => $value],
-                'bottom' => ['bottom' => $value],
-                'left' => ['left' => $value],
-                'right' => ['right' => $value],
                 'gap' => ['gap' => $value],
+                'gap-x' => ['column-gap' => $value],
+                'gap-y' => ['row-gap' => $value],
                 default => null,
-            };
-        }
-
-        // Handle top, bottom, left, right with arbitrary values: top-1, bottom-2, left-5, right-4
-        if (preg_match('/^(gap)-(\d+)$/', $utility, $matches)) {
-            $prop = $matches[1] ?? '';
-            $rem = ($matches[2] * 0.25) . 'rem';
-
-            return match ($prop) {
-                'top' => ['top' => $rem],
-                'bottom' => ['bottom' => $rem],
-                'left' => ['left' => $rem],
-                'right' => ['right' => $rem],
-                'gap' => ['gap' => $rem],
-                default => null
             };
         }
 
@@ -212,7 +200,7 @@ visibility
                     'top' => '0px',
                     'left' => '0px',
                     'width' => '100%',
-                    'background-color' => 'var(--lc-medium-tint)',
+                    'background-color' => 'var(--ot-medium-tint)',
                 ],
             ];
         }

@@ -96,6 +96,18 @@ class Compiler
             $utility = trim(array_pop($parts));
             $modifiers = $parts;
 
+            $hasInvalidModifier = false;
+            foreach ($modifiers as $modifier) {
+                if (!$this->isValidModifier($modifier)) {
+                    $hasInvalidModifier = true;
+                    break;
+                }
+            }
+
+            if ($hasInvalidModifier) {
+                continue;
+            }
+
             $ruleData = $this->resolveUtility($utility);
             if (!$ruleData) {
                 continue;
@@ -107,12 +119,7 @@ class Compiler
             $stateModifiers = [];
 
             foreach ($modifiers as $mod) {
-                if (isset($this->breakpoints[$mod])) {
-                    $activeConditions[] = $this->resolveMediaCondition($mod);
-                } elseif (preg_match('/^(min|max)-(.+)$/', $mod, $matches) && isset($this->breakpoints[$matches[2]])) {
-                    $activeConditions[] = $this->resolveMediaCondition($mod);
-                } elseif (isset($this->mediaModifiers[$mod])) {
-                    // RESOLVE IT HERE: Pass $mod so it turns into (prefers-color-scheme: dark)
+                if ($this->isBreakpointModifier($mod) || isset($this->mediaModifiers[$mod]) || str_starts_with($mod, '(')) {
                     $activeConditions[] = $this->resolveMediaCondition($mod);
                 } else {
                     $stateModifiers[] = $mod;
@@ -150,6 +157,29 @@ class Compiler
         }
 
         return null;
+    }
+
+    protected function isValidModifier(string $modifier): bool
+    {
+        return $this->isBreakpointModifier($modifier)
+            || isset($this->mediaModifiers[$modifier])
+            || isset($this->states[$modifier])
+            || str_starts_with($modifier, '(')
+            || preg_match('/^has\(.+\)$/', $modifier) === 1;
+    }
+
+    protected function isBreakpointModifier(string $modifier): bool
+    {
+        if (isset($this->breakpoints[$modifier])) {
+            return true;
+        }
+
+        if (preg_match('/^(min|max)-(.+)$/', $modifier, $matches) !== 1) {
+            return false;
+        }
+
+        return isset($this->breakpoints[$matches[2]])
+            || preg_match('/^\[[^\]]+\]$/', $matches[2]) === 1;
     }
 
     protected function resolveExtends(array $ruleData, string $currentContext = ''): array
@@ -249,6 +279,22 @@ class Compiler
 
     protected function formatCssRule(string $selector = '', array $data = []): string
     {
+        $atRules = [];
+
+        foreach ($data as $key => $value) {
+            if (
+                is_string($key)
+                && (str_starts_with($key, '@media ') || $key === '@starting-style')
+                && is_array($value)
+            ) {
+                $atRule = str_starts_with($key, '@media ')
+                    ? '@media ' . $this->resolveMediaCondition(trim(substr($key, strlen('@media'))))
+                    : $key;
+                $atRules[$atRule][] = $this->formatCssRule($selector, $value);
+                unset($data[$key]);
+            }
+        }
+
         $flattened = $this->flattenCssRules($selector, $data);
         $grouped = [];
         $supportsGrouped = [];
@@ -302,6 +348,16 @@ class Compiler
             }
             $innerCss = implode("\n\n", $supportsBlocks);
             $output[] = "@supports {$supportsCondition} {\n{$innerCss}\n}";
+        }
+
+        foreach ($atRules as $atRule => $ruleCss) {
+            $innerCss = implode("\n\n", array_filter($ruleCss));
+            if ($innerCss === '') {
+                continue;
+            }
+
+            $indentedCss = '  ' . str_replace("\n", "\n  ", $innerCss);
+            $output[] = "{$atRule} {\n{$indentedCss}\n}";
         }
 
         return implode("\n\n", $output);
