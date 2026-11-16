@@ -8,7 +8,7 @@ class Extractor
 {
     private const CANDIDATE_PATTERN = '~' .
         '(?<=\s|[\'"\`<>]|^)' .               // Boundary start
-        '(?:[a-zA-Z0-9_\-\.\/%\#\(\)]+:)*' .  // Variants (e.g., hover:, focus:, has(.form-invalid):)
+        '(?:[a-zA-Z0-9_\-\.\/%\#]+(?:\([^)]*\))?:)*' . // Variants supporting functions with colons (e.g., has(input:checked):)
         '!*' .                                // Important prefix (!)
         '-?' .                                // Negative prefix (-)
         '[a-zA-Z0-9_\-\.\/%\#]+' .            // Core utility (form-control-date)

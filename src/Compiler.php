@@ -92,7 +92,7 @@ class Compiler
         $this->usedKeyframes = [];
 
         foreach ($tokens as $token) {
-            $parts = explode(':', $token);
+            $parts = $this->splitModifiers($token);
             $utility = trim(array_pop($parts));
             $modifiers = $parts;
 
@@ -145,6 +145,33 @@ class Compiler
         }
 
         return $this->buildFinalCss($baseRules, $mediaRules);
+    }
+
+    protected function splitModifiers(string $token): array
+    {
+        $parts = [];
+        $start = 0;
+        $parenthesisDepth = 0;
+        $bracketDepth = 0;
+
+        for ($index = 0, $length = strlen($token); $index < $length; $index++) {
+            if ($token[$index] === '(') {
+                $parenthesisDepth++;
+            } elseif ($token[$index] === ')') {
+                $parenthesisDepth--;
+            } elseif ($token[$index] === '[') {
+                $bracketDepth++;
+            } elseif ($token[$index] === ']') {
+                $bracketDepth--;
+            } elseif ($token[$index] === ':' && $parenthesisDepth === 0 && $bracketDepth === 0) {
+                $parts[] = substr($token, $start, $index - $start);
+                $start = $index + 1;
+            }
+        }
+
+        $parts[] = substr($token, $start);
+
+        return $parts;
     }
 
     protected function resolveUtility(string $utility): ?array

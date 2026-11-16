@@ -47,6 +47,13 @@ it('applies states and breakpoints to the full selector', function (): void {
     $this->assertStringContainsString('background-color: var(--ot-primary);', $css);
 });
 
+it('preserves colons inside has selectors while compiling utilities', function (): void {
+    $css = compiler()->compile(['has(input:checked):bg-primary']);
+
+    expect($css)->toContain('.has\\(input\\:checked\\)\\:bg-primary:has(input:checked) {')
+        ->and($css)->toContain('background-color: var(--ot-primary);');
+});
+
 it('compiles component media rules without requiring a breakpoint utility class', function (): void {
     $css = compiler()
         ->registerRule(new DialogComponent)

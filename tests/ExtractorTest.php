@@ -22,7 +22,7 @@ afterEach(function (): void {
 });
 
 it('scans supported files and filters noise and excluded directories', function (): void {
-    file_put_contents($this->directory . '/view.php', '<div class="flex md:hover:bg-red-500 p-[20px]">Hello</div>');
+    file_put_contents($this->directory . '/view.php', '<div class="flex md:hover:bg-red-500 p-[20px] has(input:checked):bg-primary">Hello</div>');
     file_put_contents($this->directory . '/nested/app.js', 'const className = "grid gap-4";');
     file_put_contents($this->directory . '/nested/inline.html', '<script>element.className = "animate-pop-in";</script>');
     file_put_contents($this->directory . '/ignored.min.js', 'const className = "should-not-appear";');
@@ -30,7 +30,7 @@ it('scans supported files and filters noise and excluded directories', function 
 
     $tokens = (new Extractor)->scan([$this->directory], ['php', 'js', 'html']);
 
-    expect($tokens)->toContain('flex', 'md:hover:bg-red-500', 'p-[20px]', 'grid', 'gap-4', 'animate-pop-in')
+    expect($tokens)->toContain('flex', 'md:hover:bg-red-500', 'p-[20px]', 'has(input:checked):bg-primary', 'grid', 'gap-4', 'animate-pop-in')
         ->not->toContain('should-not-appear', 'vendor-class');
 });
 
