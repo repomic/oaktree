@@ -258,6 +258,12 @@ class FormRule implements RuleInterface
                     'margin-left' => 'unset',
                 ],
             ],
+            '&.form-check-multiple:focus-within' => [
+                'box-shadow' => 'unset',
+                'label:focus-within' => [
+                    'box-shadow' => '0 0 0 0.1rem rgba(10, 90, 209, 0.514)',
+                ],
+            ],
 
             '.form-control' => [
                 'flex' => '1 1 fit-content',
