@@ -364,6 +364,13 @@ class FormRule implements RuleInterface
             'background-color' => 'var(--ot-light)',
             'border' => '1px solid var(--ot-light-shade)',
         ],
+
+        'invalid-feedback' => [
+            '@extend:mt-1',
+            '@extend:text-sm',
+            '@extend:border-0',
+            '@extend:color-danger',
+        ],
     ];
 
     public function handle(string $utility, Compiler $compiler): array|Css|null
