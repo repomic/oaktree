@@ -63,6 +63,15 @@ class TypographyRule implements RuleInterface
         'hyphens-none' => ['hyphens' => 'none'],
         'hyphens-manual' => ['hyphens' => 'manual'],
         'hyphens-auto' => ['hyphens' => 'auto'],
+
+        'align-baseline' => ['vertical-align' => 'baseline'],
+        'align-top' => ['vertical-align' => 'top'],
+        'align-middle' => ['vertical-align' => 'middle'],
+        'align-bottom' => ['vertical-align' => 'bottom'],
+        'align-text-top' => ['vertical-align' => 'text-top'],
+        'align-text-bottom' => ['vertical-align' => 'text-bottom'],
+        'align-sub' => ['vertical-align' => 'sub'],
+        'align-super' => ['vertical-align' => 'super'],
     ];
 
     protected array $font_sizes = [
